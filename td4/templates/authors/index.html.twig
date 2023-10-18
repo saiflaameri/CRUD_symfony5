@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AuthorsController!{% endblock %}
+
+{% block body %}
+<a href="ajouter" class="btn btn-primary">Ajouter </a>
+{% if author is empty %}
+<p> le tableau est vide<p/>
+{% else %}
+    
+<table border>
+
+<th>   Userbname</th>
+<th>Email</th>
+
+<th>Actions</th>
+ {% for item in author %}
+    <tr>
+
+<td>{{item.username}}</td>
+<td> {{item.email}}</td>
+<td><a href="{{path('updateauthor',{'id':item.id})}}"> Edit</a> <a href="{{path('deleteauthor',{'id':item.id})}}">Delete</a></td>
+
+
+
+
+</tr>
+
+{% endfor %}
+
+
+
+</table>{% endif %}
+{% endblock %}
